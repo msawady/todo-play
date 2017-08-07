@@ -1,6 +1,7 @@
 package services
 
 import com.google.inject.Singleton
+import play.Environment
 import services.domain._
 
 import scala.collection.{immutable, mutable}
@@ -14,7 +15,7 @@ class TodoManager {
 
   private def initializeData(): mutable.Map[Int, Todo] = {
     val map: mutable.Map[Int, Todo] = new mutable.HashMap[Int, Todo]
-    val s = Source.fromFile("C:\\Users\\masaa\\workspaces\\data\\TODO.txt")
+    val s = Source.fromFile(Environment.simple().getFile("data\\TODO.txt"), "UTF-8")
     val strList: List[String] = try s.getLines.toList finally s.close()
     strList.foreach(str => {
       val data: Array[String] = str split "\t"
