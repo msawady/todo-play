@@ -24,15 +24,25 @@ $(document).ready(function() {
     context.attach("#todo_body",[
         {header: 'Status'},
         {text: 'mark as UNDONE', action: function(e){
-            console.log(getSelectedIds())
+            reqUpdateTodoStatus("UNDONE")
         }},
         {text: 'mark as DOING', action: function(e){
-            console.log(getSelectedIds())
+            reqUpdateTodoStatus("DOING")
         }},
         {text: 'mark as DONE', action: function(e){
-            console.log(getSelectedIds())
+            reqUpdateTodoStatus("DONE")
         }}
     ])
+
+    function reqUpdateTodoStatus(status){
+        $.get('/todo/update',
+            {
+                ids: getSelectedIds,
+                status: status
+            },
+            function(){location.reload()}
+        )
+    }
 
     // チェックの入っている列のIDを取得する
     function getSelectedIds() {
