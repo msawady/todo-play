@@ -1,6 +1,7 @@
 import java.time.Clock
 
 import com.google.inject.AbstractModule
+import services.repository.TodoRepository
 import services.{ApplicationTimer, TodoManager}
 
 /**
@@ -24,6 +25,7 @@ class Module extends AbstractModule {
     // Set AtomicCounter as the implementation for Counter.
     // TodoManager
     bind(classOf[TodoManager]).asEagerSingleton()
+    bind(classOf[TodoRepository]).asEagerSingleton()
   }
 
 }
