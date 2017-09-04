@@ -1,22 +1,23 @@
 package services.domain
 
+import slick.driver.MySQLDriver.api._
+
 /**
   * entity class of todo
   */
-class Todo(id: Int, var status: TodoStatus, title: String) {
+case class Todo(id: Int, var status: TodoStatus, title: String)
 
-  def getId = id
+class Todos(tag: Tag) extends Table[Todo](tag, "todo") {
+  def id = column[Int]("id", O.PrimaryKey, O.AutoInc)
 
-  def getStatus = status
+  def status = column[TodoStatus]("status")
 
-  def getTitle = title
+  def title = column[String]("title")
 
-  def toTsvString = "%s\t%s\t%s".format(id.toString, status, title)
+  def * = (id, status, title) <> (Todo.tupled, Todo.unapply)
 
-  def update(status: TodoStatus) = {
-    this.status = status
-  }
 }
+object Todos extends TableQuery(new Todos(_))
 
 
 
