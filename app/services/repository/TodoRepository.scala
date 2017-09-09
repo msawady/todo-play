@@ -4,7 +4,7 @@ import javax.inject.Inject
 
 import com.google.inject.Singleton
 import services.domain.{Todo, TodoStatus, Todos}
-import slick.driver.MySQLDriver.api._
+import slick.jdbc.MySQLProfile.api._
 
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration

@@ -1,6 +1,6 @@
 package services.domain
 
-import slick.driver.MySQLDriver.api._
+import slick.jdbc.MySQLProfile.api._
 
 sealed trait TodoStatus
 
