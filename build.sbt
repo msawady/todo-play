@@ -16,4 +16,5 @@ libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "3.0.0
 libraryDependencies += "org.webjars" %% "webjars-play" % "2.6.1"
 libraryDependencies += "org.webjars" % "bootstrap" % "4.0.0-alpha.6-1"
 libraryDependencies += "org.webjars" % "jquery" % "3.2.1"
+libraryDependencies += "org.webjars.bower" % "tether" % "1.4.0"
 

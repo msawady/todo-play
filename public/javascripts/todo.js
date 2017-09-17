@@ -18,6 +18,20 @@ $(document).ready(function() {
             c.prop('checked', 'checked');
     });
 
+    $('#add-todo').click(function() {
+        var todo_title = $('#new-todo').val()
+        if(todo_title){
+            $.get('todo/add',
+            {
+                title: todo_title
+            },
+            function(){
+                $('#myModal').modal('hide');
+                location.reload()
+            })
+        }
+    });
+
     context.init({preventDoubleContext: false});
 
     // 右クリックメニュー

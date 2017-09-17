@@ -3,7 +3,7 @@ package services
 import javax.inject.Inject
 
 import com.google.inject.Singleton
-import services.domain.TodoStatus
+import services.domain.{Todo, TodoStatus}
 import services.repository.TodoRepository
 
 /**
@@ -26,5 +26,7 @@ class TodoManager @Inject()(todoRepository: TodoRepository) {
     * @param status TodoStatus change to
     */
   def update(ids: List[Int], status: String): Unit = todoRepository.updateTodoList(ids, TodoStatus.withName(status))
+
+  def add(title: String): Unit = todoRepository.addTodo(new Todo(0, TodoStatus.UNDONE, title))
 
 }

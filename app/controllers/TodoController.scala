@@ -23,4 +23,9 @@ class TodoController @Inject()(todoManager: TodoManager, cc: ControllerComponent
     Ok(todoView(todoManager.list))
   }
 
+  def add(title: String) = Action {
+    todoManager.add(title)
+    Ok(todoView(todoManager.list))
+  }
+
 }

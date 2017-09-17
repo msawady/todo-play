@@ -29,5 +29,9 @@ class TodoRepository {
     database.run(toBeUpdated.map(_.status).update(status))
   }
 
+  def addTodo(todo: Todo) = {
+    database.run(Todos += todo)
+  }
+
 }
 
